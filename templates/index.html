@@ -560,5 +560,26 @@ function download(name, content, type) {
   log(`Exported ${name}`, 'info');
 }
 </script>
+<div id="result"></div>
+
+<script>
+function showResult(data) {
+    let html = `
+    <div>
+        <h3>Port: ${data.port}</h3>
+        <p>Risk: ${data.risk}</p>
+        <p>Advice: ${data.message}</p>
+    </div>
+    `;
+    fetch('/analyze', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ port: 22 })
+})
+.then(res => res.json())
+.then(data => showResult(data));
+    document.getElementById("result").innerHTML += html;
+}
+</script>
 </body>
 </html>

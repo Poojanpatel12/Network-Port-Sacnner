@@ -3,6 +3,7 @@ import socket
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from analyzer import analyze_port
 
 app = Flask(__name__)
 
@@ -137,3 +138,5 @@ if __name__ == "__main__":
     print("   Visit: http://127.0.0.1:5000")
     print("=" * 52 + "\n")
     app.run(debug=True, threaded=True)
+    
+    
